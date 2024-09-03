@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import { Box, Button, Input, VStack, Text, Flex } from '@chakra-ui/react';
-import { useAuth } from '../../contexts';
+import { useAuth } from '../../contexts/AuthContext';
+import {
+  Box,
+  Button,
+  Input,
+  VStack,
+  Text,
+  Flex,
+  useDisclosure,
+} from '@chakra-ui/react';
+import LoadingModal from './LoadingModal';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000';
 
@@ -12,9 +20,12 @@ const Login: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const { login } = useAuth();
   const navigate = useNavigate();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMessage(null);
+    onOpen();
     try {
       const response = await fetch(`${API_URL}/auth/login`, {
         method: 'POST',
@@ -24,19 +35,21 @@ const Login: React.FC = () => {
 
       if (response.ok) {
         const data = await response.json();
+        console.log('data:', data);
         if (data.access_token) {
           login(data.access_token);
           navigate('/');
         } else {
-          setErrorMessage('no se recibió el token.');
+          setErrorMessage('no se recibió el token');
         }
       } else {
         const errorData = await response.json();
-        setErrorMessage(errorData.message || 'login error');
+        setErrorMessage(errorData.message || 'login fail');
       }
     } catch (error) {
-      console.error('Error during login:', error);
       setErrorMessage('network error.');
+    } finally {
+      onClose();
     }
   };
 
@@ -64,6 +77,7 @@ const Login: React.FC = () => {
           </VStack>
         </form>
       </Box>
+      <LoadingModal isOpen={isOpen} onClose={onClose} />
     </Flex>
   );
 };
