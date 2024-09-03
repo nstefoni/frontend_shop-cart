@@ -1,9 +1,7 @@
 import React from 'react';
 import { Box, Flex, VStack, Heading, Text } from '@chakra-ui/react';
-import { useCart } from '../hooks/useCart';
-import { useShippingThreshold } from '../hooks/useShippingThreshold';
-import { CartItemGroup } from '../components/CartItemGroup';
-import { CartSummary } from '../components/CartSummary';
+import { useShippingThreshold, useCart } from '../hooks';
+import { CartItemGroup, CartSummary } from '../components/cart';
 
 export const CartPage: React.FC = () => {
   const { cartItems, totalItems, totalPrice } = useCart();

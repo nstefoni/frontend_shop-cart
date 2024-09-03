@@ -2,8 +2,8 @@ import React, { useMemo } from 'react';
 import { Box, VStack, Text } from '@chakra-ui/react';
 import { CartItem } from './CartItem';
 import { FreeShippingProgress } from './FreeShippingProgress';
-import { formatCurrency } from '../utils/formatCurrency';
-import { ICartItem } from '../types';
+import { ICartItem } from '../../types';
+import { formatCurrency } from '../../utils';
 
 interface CartItemGroupProps {
   sellerName: string;

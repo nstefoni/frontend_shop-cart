@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, VStack, Heading, Text, Flex } from '@chakra-ui/react';
-import { formatCurrency } from '../utils/formatCurrency';
+import { formatCurrency } from '../../utils';
 
 interface CartSummaryProps {
   totalItems: number;

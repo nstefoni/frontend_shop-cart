@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+
 import { Box, Button, Input, VStack, Text, Flex } from '@chakra-ui/react';
+import { useAuth } from '../../contexts';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000';
 

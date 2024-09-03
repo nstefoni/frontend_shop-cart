@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { IProduct } from '../types';
-import { productService } from '../services/productService';
+import { productService } from '../services/';
 import { UI_TEXT } from '../constants/uiText';
 
 export const useProducts = () => {

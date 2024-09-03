@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Text, Progress } from '@chakra-ui/react';
-import { formatCurrency } from '../utils/formatCurrency';
+import { formatCurrency } from '../../utils';
 
 interface FreeShippingProgressProps {
   currentTotal: number;

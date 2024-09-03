@@ -1,7 +1,7 @@
 import React from 'react';
 import { SimpleGrid } from '@chakra-ui/react';
-import { IProduct } from '../types';
 import { ProductCard } from './ProductCard';
+import { IProduct } from '../../types';
 
 interface ProductListProps {
   products: IProduct[];

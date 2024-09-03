@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Box, Container, Heading } from '@chakra-ui/react';
 import { productService } from '../services/productService';
 import { IProduct } from '../types';
-import ProductList from '../components/ProductList';
+import { ProductList } from '../components/product';
 
 export const ProductsPage: React.FC = () => {
   const [products, setProducts] = useState<IProduct[]>([]);

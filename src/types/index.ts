@@ -18,7 +18,7 @@ export interface ISeller {
   // Eliminamos freeShippingThreshold de aquí
 }
 
-export interface CartItemGroup {
+export interface ICartItemGroup {
   seller?: ISeller;
   items: ICartItem[];
   totalPrice: number;

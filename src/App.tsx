@@ -1,12 +1,8 @@
 import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { CartProvider } from './contexts/CartContext';
-import { Header } from './components/Header';
-import { ProductsPage } from './pages/ProductsPage';
-import { CartPage } from './pages/CartPage';
-import { AuthProvider } from './contexts/AuthContext';
-import Login from './components/Login';
-import ProtectedRoute from './components/ProtectedRoute';
+import { ProductsPage, CartPage } from './pages/';
+import { AuthProvider, CartProvider } from './contexts/';
+import { Login, Header, ProtectedRoute } from './components/common';
 
 const App: React.FC = () => {
   const location = useLocation();

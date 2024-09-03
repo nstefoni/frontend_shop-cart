@@ -8,10 +8,10 @@ import {
   Flex,
   useToast,
 } from '@chakra-ui/react';
-import { IProduct } from '../types';
-import { useCart } from '../hooks/useCart';
-import { formatCurrency } from '../utils/formatCurrency';
-import { UI_TEXT } from '../constants/uiText';
+import { UI_TEXT } from '../../constants';
+import { formatCurrency } from '../../utils';
+import { useCart } from '../../hooks';
+import { IProduct } from '../../types';
 
 interface ProductCardProps {
   product: IProduct;

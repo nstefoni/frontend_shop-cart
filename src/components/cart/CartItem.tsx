@@ -10,12 +10,13 @@ import {
   NumberIncrementStepper,
   NumberDecrementStepper,
 } from '@chakra-ui/react';
-import { ICartItem as CartItemType } from '../types';
-import { useCart } from '../hooks/useCart';
-import { formatCurrency } from '../utils/formatCurrency';
+import { ICartItem } from '../../types';
+
+import { formatCurrency } from '../../utils';
+import { useCart } from '../../hooks';
 
 interface CartItemProps {
-  item: CartItemType;
+  item: ICartItem;
 }
 
 export const CartItem: React.FC<CartItemProps> = ({ item }) => {

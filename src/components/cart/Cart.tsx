@@ -1,11 +1,10 @@
 import React, { useMemo } from 'react';
-import { VStack, Heading, Text, Button, Spinner } from '@chakra-ui/react';
-import { useCart } from '../hooks/useCart';
-import { useShippingThreshold } from '../hooks/useShippingThreshold';
+import { VStack, Heading, Text, Button } from '@chakra-ui/react';
 import { CartItemGroup } from './CartItemGroup';
-import { formatCurrency } from '../utils/formatCurrency';
-import { UI_TEXT } from '../constants/uiText';
-import { ICartItem } from '../types';
+import { ICartItem } from '../../types';
+import { UI_TEXT } from '../../constants';
+import { formatCurrency } from '../../utils';
+import { useCart, useShippingThreshold } from '../../hooks';
 
 export const Cart: React.FC = () => {
   const { cartItems, clearCart, totalPrice } = useCart();

@@ -9,9 +9,9 @@ import {
 } from '@chakra-ui/react';
 import { FiShoppingCart } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
-import { useCart } from '../hooks/useCart';
-import { UI_TEXT } from '../constants/uiText';
-import { CartIndicator } from './CartIndicator';
+import { CartIndicator } from '../cart';
+import { UI_TEXT } from '../../constants';
+import { useCart } from '../../hooks';
 
 export const Header: React.FC = () => {
   const theme = useTheme();
