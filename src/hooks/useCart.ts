@@ -1,6 +1,6 @@
 import { useToast } from '@chakra-ui/react';
 import { useContext } from 'react';
-import { CartContext } from '../contexts/CartContext';
+import { CartContext } from '../contexts';
 
 export const useCart = () => {
   const context = useContext(CartContext);
@@ -27,7 +27,7 @@ export const useCart = () => {
     toast({
       title: 'Producto eliminado',
       description: 'El producto ha sido eliminado del carrito',
-      status: 'success',
+      status: 'warning',
       duration: 3000,
       isClosable: true,
     });

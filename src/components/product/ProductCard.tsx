@@ -8,10 +8,10 @@ import {
   Flex,
   useToast,
 } from '@chakra-ui/react';
-import { UI_TEXT } from '../../constants';
-import { formatCurrency } from '../../utils';
-import { useCart } from '../../hooks';
 import { IProduct } from '../../types';
+import { useCart } from '../../hooks/useCart';
+import { formatCurrency } from '../../utils/formatCurrency';
+import { UI_TEXT } from '../../constants/uiText';
 
 interface ProductCardProps {
   product: IProduct;
@@ -59,8 +59,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             {formatCurrency(product.price)}
           </Text>
         </Flex>
-        <Text fontSize="sm" color="gray.500" my={2}>
-          Enviado por {product.sellerName}
+        <Text fontSize="sm" color="gray.700" my={2}>
+          Vendedor: {product.sellerName?.toUpperCase()}
         </Text>
         <Button colorScheme="blue" width="full" onClick={handleAddToCart}>
           {UI_TEXT.PRODUCTS.ADD_TO_CART}

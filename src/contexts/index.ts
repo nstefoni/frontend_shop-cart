@@ -1,4 +1,5 @@
-import { CartContext, CartProvider } from './CartContext';
-import { useAuth, AuthProvider } from './AuthContext';
+import { AuthContext, AuthProvider, useAuth } from './AuthContext';
 
-export { useAuth, CartContext, CartProvider, AuthProvider };
+import { CartContext, CartProvider } from './CartContext';
+
+export { useAuth, CartContext, CartProvider, AuthProvider, AuthContext };

@@ -24,7 +24,7 @@ export const CartItemGroup: React.FC<CartItemGroupProps> = ({
   return (
     <Box borderWidth={1} borderRadius="lg" p={4}>
       <Text fontWeight="bold" mb={4}>
-        Productos de {sellerName}
+        Productos de {sellerName.toUpperCase()}
       </Text>
       <VStack spacing={4} align="stretch">
         {items.map((item) => (

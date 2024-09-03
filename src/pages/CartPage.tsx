@@ -1,13 +1,25 @@
 import React from 'react';
-import { Box, Flex, VStack, Heading, Text } from '@chakra-ui/react';
-import { useShippingThreshold, useCart } from '../hooks';
-import { CartItemGroup, CartSummary } from '../components/cart';
+import {
+  Box,
+  Flex,
+  VStack,
+  Heading,
+  Text,
+  Button,
+  useDisclosure,
+} from '@chakra-ui/react';
+import { useCart } from '../hooks/useCart';
+import { useShippingThreshold } from '../hooks/';
+import { CartItemGroup, CartSummary } from '../components/cart/';
+import { LoadingModal } from '../components/common/';
+import { useAuth } from '../contexts';
 
 export const CartPage: React.FC = () => {
   const { cartItems, totalItems, totalPrice } = useCart();
   const { threshold, error } = useShippingThreshold();
+  const { logout } = useAuth();
+  const { onOpen, onClose, isOpen } = useDisclosure();
 
-  // if (loading) return <Spinner />;
   if (error) return <Text color="red.500">{error}</Text>;
 
   const groupedItems = cartItems.reduce((acc, item) => {
@@ -16,6 +28,18 @@ export const CartPage: React.FC = () => {
     acc[key].push(item);
     return acc;
   }, {} as Record<string, typeof cartItems>);
+
+  const handleLogout = async () => {
+    onOpen();
+
+    try {
+      logout();
+    } catch (error) {
+      throw new Error('logout error');
+    } finally {
+      onClose();
+    }
+  };
 
   return (
     <Flex
@@ -39,9 +63,22 @@ export const CartPage: React.FC = () => {
           ))}
         </VStack>
       </Box>
-      <Box flex={1} maxWidth={{ base: '100%', md: '300px' }}>
-        <CartSummary totalItems={totalItems} totalPrice={totalPrice} />
-      </Box>
+      <VStack align="initial">
+        <Box flex={1} maxWidth={{ base: '100%', md: '300px' }}>
+          <CartSummary totalItems={totalItems} totalPrice={totalPrice} />
+        </Box>
+        <Box flex={4}>
+          <Button
+            colorScheme="blue"
+            size="lg"
+            width="100%"
+            onClick={handleLogout}
+          >
+            Logout
+          </Button>{' '}
+        </Box>
+      </VStack>
+      <LoadingModal isOpen={isOpen} onClose={onClose} />
     </Flex>
   );
 };
